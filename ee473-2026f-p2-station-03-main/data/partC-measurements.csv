@@ -1,0 +1,5 @@
+# Part C measurement session. One session, one dataset, one report.
+# Angles in radians, positions in metres, in robot.widowx.JOINT_NAMES order.
+# *_cmd: what you commanded.  *_read: what arm.read() reported the servos reached.
+# *_pred: your fk() prediction.  *_meas: measured with a rule.  *_drv: driver_ee_pose().
+pose,j0_cmd,j1_cmd,j2_cmd,j3_cmd,j4_cmd,j5_cmd,j0_read,j1_read,j2_read,j3_read,j4_read,j5_read,x_pred,y_pred,z_pred,x_meas,y_meas,z_meas,x_drv,y_drv,z_drv,rx_drv,ry_drv,rz_drv,notes

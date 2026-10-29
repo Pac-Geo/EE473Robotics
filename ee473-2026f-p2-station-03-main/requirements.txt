@@ -1,0 +1,14 @@
+# A manifest of what the lab stations provide.
+#
+# The shared environment on each station activates when you open a terminal and
+# already contains everything listed here, along with the ML and vision stack.
+#
+# trossen-arm is pinned deliberately. The SDK major.minor version must match the
+# firmware on the arm controller, which is v1.10.0 in this lab. A plain
+# `pip install trossen-arm` fetches a newer release that fails at configure()
+# with a LogicError. If you see that error, check this version first.
+
+numpy>=1.24
+pytest>=7.0
+modern_robotics>=1.1
+trossen-arm==1.10.0
