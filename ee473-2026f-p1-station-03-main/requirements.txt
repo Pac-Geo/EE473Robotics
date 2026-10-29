@@ -1,0 +1,12 @@
+# A manifest of what the lab stations provide.
+#
+# The shared environment on each station activates when you open a terminal and
+# already contains everything listed here, along with the ML and vision stack.
+# This file records the versions this project was written against.
+#
+# The station's PyTorch is pinned to a CUDA 12.8 wheel, which is the build the
+# RTX 5080 requires.
+
+numpy>=1.24
+pytest>=7.0
+modern_robotics>=1.1

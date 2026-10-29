@@ -1,0 +1,4 @@
+# Part D, shared by the station team. One row per configuration per trial.
+# Angles in radians, positions in millimetres, measured relative to the base frame origin.
+# All three of you analyse this same file against your own forward kinematics.
+config_id,trial,waist,shoulder,elbow,wrist_angle,wrist_rotate,measured_x,measured_y,measured_z,notes
