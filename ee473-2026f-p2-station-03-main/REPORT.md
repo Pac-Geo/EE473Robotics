@@ -25,18 +25,30 @@ Delete this section before submission.
 
 ## 1. Frame assignment
 
-Photograph or scan your hand-drawn frame assignment and put it here.
+The first step in developing the forward kinematics model for the WidowX AI was assigning coordinate frames to its six rotational joints. These frames establish how the position and orientation of each link are described relative to the robot's base. We followed the classical Denavit–Hartenberg (DH) convention, consistent with the approach used in Project 1.
 
-```
-![Frame assignment](figures/frames.jpg)
-```
+<img width="1430" height="839" alt="IMG_1063" src="https://github.com/user-attachments/assets/6f01acbd-342b-4f11-bb2e-45fa28aa4182" />
 
-The base frame, the tool frame, and the direction of every z axis are prescribed in §3.1 of the
-instructions. This section concerns what remained open: the position of each origin along its
-axis, and the direction of x wherever the common normal did not determine it.
+####Base and Joint Frames
+The base coordinate frame was defined using Trossen's base_link, with its origin at the robot's mounting surface. Following the specified coordinate convention, the positive X-axis points forward, the positive Y-axis points left, and the positive Z-axis points upward.
 
-State the Denavit-Hartenberg convention employed. The instructions specify the classical
-convention; state it regardless, as a reader cannot determine it from the table alone.
+For each joint, the corresponding DH Z-axis was aligned with the joint's axis of rotation. The positive rotation directions were determined from the manufacturer's URDF model. In their respective local joint frames, the six rotation axes are defined as +Z, +Y, −Y, −Y, −Z, and +X.
+
+The remaining coordinate axes were assigned according to the classical DH rules. Where two consecutive joint axes were separated, the X-axis was selected along their common normal. Where joint axes intersected or were parallel, the remaining freedom was resolved using the link geometry and the right-hand rule. Frame origins were positioned consistently with these axis assignments and the physical dimensions of the manipulator.
+
+####Tool Frame
+The final coordinate frame represents Trossen's Tool frame rather than the sixth joint itself. The robot's kinematic chain continues from Joint 6 to the Flange frame and then to the Tool frame through two fixed transformations. The tool point is located approximately 156.06 mm from the flange, so this additional transformation must be included when calculating the final end-effector pose.
+
+DH Convention
+
+We used the classical DH transformation sequence:
+
+A_i = R_z(\theta_i)T_z(d_i)T_x(a_i)R_x(\alpha_i)
+
+Here, θ represents rotation about the preceding Z-axis, d represents translation along that axis, a represents the distance along the common normal, and α represents the twist angle between consecutive Z-axes.
+
+Establishing these frames provides the geometric foundation for deriving the DH parameter table and implementing forward kinematics in the following sections.
+
 
 ## 2. DH table
 
